@@ -105,7 +105,7 @@ snell_chart_data = [
     },
     {
         "Letter": "P E C F D",
-        "Possibilities": ["P E C F D.", "P ECFD.", "PE C F D.", "PECF D.","PE CFD", "P E CFD.", "P ECF D.", "PECFD."],
+        "Possibilities": ["P E C F D.", "P ECFD.", "PE C F D.", "PECF D.", "PE CFD", "P E CFD.", "P ECF D.", "PECFD."],
         "Font Size (mm)": 5.4,
         "Font Size (px)": 18,
         "Snellen Fraction": "20/50",
@@ -259,14 +259,13 @@ def is_input_correct(user_input, expected_input):
     return re.sub(r'[^a-zA-Z]', '', user_input).lower() == expected_input.lower()
 
 
-
 @app.route('/snellen_chart_test')
 def index():
     global current_word_index
     global incorrect_attempts
     global cap
     initial_message = "Hello! Welcome to the eye test. Click the microphone button to start or stop the voice listener. When ready, please read the first letter displayed on the Snellen chart."
-    
+
     current_word_index = 0
     incorrect_attempts = {i: 0 for i in range(len(snell_chart_data))}
     if cap is None or not cap.isOpened():
@@ -274,7 +273,7 @@ def index():
     return render_template('index.html', data=snell_chart_data[current_word_index], initial_message=initial_message)
 
 
-# 
+#
 def generate_report_table(word_index):
     if word_index >= 0 and word_index < len(snell_chart_data):
         word_data = snell_chart_data[word_index]
@@ -291,6 +290,7 @@ def generate_report_table(word_index):
     else:
         return ""
 
+
 @app.route('/check-input', methods=['POST'])
 def check_input():
     global current_word_index
@@ -305,7 +305,8 @@ def check_input():
             incorrect_attempts[current_word_index] = 0
             current_word_index += 1
             response_text = "Correct!"
-            next_data = snell_chart_data[current_word_index] if current_word_index < len(snell_chart_data) else None
+            next_data = snell_chart_data[current_word_index] if current_word_index < len(
+                snell_chart_data) else None
 
             # Store the user's input and correctness in the data dictionary
             snell_chart_data[current_word_index - 1]['user_input'] = user_input
@@ -315,7 +316,8 @@ def check_input():
 
             if incorrect_attempts[current_word_index] >= 3:
                 response_text = f"That seems challenging. The correct input was one of: {', '.join(expected_input)}. Let's move to the next one."
-                next_data = snell_chart_data[current_word_index] if current_word_index < len(snell_chart_data) else None
+                next_data = snell_chart_data[current_word_index] if current_word_index < len(
+                    snell_chart_data) else None
 
                 # Store the user's input and correctness in the data dictionary
                 snell_chart_data[current_word_index]['user_input'] = user_input
@@ -325,7 +327,8 @@ def check_input():
                 report_table = generate_report_table(current_word_index)
                 if report_table:
                     response_text += report_table
-                    next_data = snell_chart_data[current_word_index] if current_word_index < len(snell_chart_data) else None
+                    next_data = snell_chart_data[current_word_index] if current_word_index < len(
+                        snell_chart_data) else None
             else:
                 response_text = f"Try again. (Attempt {incorrect_attempts[current_word_index]})"
                 next_data = None
@@ -338,7 +341,6 @@ def check_input():
     return jsonify({'response_text': response_text, 'response_voice': response_voice, 'next_data': next_data})
 
 # end
-
 
 
 def generate_frames():
@@ -390,11 +392,10 @@ def close_camera():
 def home1():
     return render_template('home.html')
 
+
 @app .route('/about')
 def about():
     return render_template('about.html')
-
-
 
 
 @app.route('/video_feed')
