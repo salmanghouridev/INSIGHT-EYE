@@ -51,7 +51,7 @@ cap = None
 snell_chart_data = [
     {
         "Letter": "E",
-        "Possibilities": ["E.", "E For Elephant"],
+        "Possibilities": ["E.","e e","e","E for Elephant", "E For Elephant.","E4 elephant", "E for elephant", "E for elephant.", "E for el"],
         "Font Size (mm)": 11.3,
         "Font Size (px)": 39,
         "Snellen Fraction": "20/20",
@@ -69,7 +69,7 @@ snell_chart_data = [
     },
     {
         "Letter": "T O Z",
-        "Possibilities": ["T O Z.", "TOZ", "T OZ.", "T OZ.", "TOZ."],
+        "Possibilities": ["T O Z.", "TOZ", "t o z","t o z.", "T OZ.", "T OZ.", "TOZ."],
         "Font Size (mm)": 7.5,
         "Font Size (px)": 24,
         "Snellen Fraction": "20/30",
@@ -87,7 +87,7 @@ snell_chart_data = [
     },
     {
         "Letter": "L P E D",
-        "Possibilities": ["L PED.", "LP ED.", "L P ED.", "LPED.", "L P E D.", "LPE D.", "L PE D.", "L PED. "],
+        "Possibilities": ["L PED.", "LP ED.","lped","l p e d", "L P ED.", "LPED.", "L P E D.", "LPE D.", "L PE D.", "L PED. "],
         "Font Size (mm)": 6.0,
         "Font Size (px)": 20,
         "Snellen Fraction": "20/40",

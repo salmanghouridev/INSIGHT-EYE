@@ -25,6 +25,13 @@
         display: flex;
         flex-direction: column;
       }
+      #chat-interface {
+  border: 1px solid #ccc;
+  height: 106px;
+  padding: 10px;
+  
+}
+
       .box {
         position: relative;
         box-sizing: border-box;
@@ -40,7 +47,7 @@
       }
       #camera-feed {
         width: 300px; /* Reduced size but maintained square shape */
-        height: 300px; /* Reduced size but maintained square shape */
+        height: 250px; /* Reduced size but maintained square shape */
         margin: 0 auto; /* Centering it */
         background-image: url('/video_feed');
         background-size: cover;
@@ -120,6 +127,7 @@
     } */
     .box#ai-assistant {
             flex: 1;
+            height: 60%;
             background-color: #f0f1f6;
             display: flex;
             flex-direction: column;
@@ -206,8 +214,6 @@
   <div class="box" id="ai-assistant" style="flex: 1; background-color: #f0f1f6;">
     <i class="fas fa-robot" style="font-size: 3em; margin-bottom: 20px; color: #17a2b8;"></i>
     <div style="text-align: center;">
-      <p style="font-size: 18px; color: #333;">Instructions:</p>
-      <p style="font-size: 16px; color: #666;">Please type the word you see on the Snellen chart into the input box and click verify to check if you are correct.</p>
       
       <div id="chat-interface" style="border: 1px solid #ccc; height: 300px; padding: 10px; overflow-y: scroll;">
         <!-- Chat messages will appear here -->
@@ -218,7 +224,7 @@
       </div>
     </div>
   </div>
-  <div class="box" id="report" style="flex: 1; background-color: #f0f1f6;">
+  <!-- <div class="box" id="report" style="flex: 1; background-color: #f0f1f6;">
     <div id="report-details" style="text-align: center;">
       <p style="font-size: 18px; color: #333;">Distance: <span id="distance" style="color: #28a745;">0 cm</span></p>
       <div>
@@ -226,7 +232,7 @@
         <div id="report-table-container"></div>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="box" id="camera-feed" style="flex: 1; background-color: #f0f1f6;">
     <!-- Your camera feed content here -->
   </div>
