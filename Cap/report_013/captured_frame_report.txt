@@ -1,0 +1,3 @@
+The calculated angle is: -8.02 degrees.
+The calculated vertical displacement is: 10.00 pixels.
+Predicted strabismus type: Exotropia
