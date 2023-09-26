@@ -47,7 +47,6 @@ cap = None
 
 # snell chart
 
-
 snell_chart_data = [
     {
         "Letter": "E",
@@ -254,7 +253,6 @@ current_word_index = 0
 incorrect_attempts = {i: 0 for i in range(len(snell_chart_data))}
 distance_cm_global = 0
 
-
 def is_input_correct(user_input, expected_input):
     return re.sub(r'[^a-zA-Z]', '', user_input).lower() == expected_input.lower()
 
@@ -264,7 +262,8 @@ def index():
     global current_word_index
     global incorrect_attempts
     global cap
-    initial_message = "Hello! Welcome to the eye test. Click the microphone button to start or stop the voice listener. When ready, please read the first letter displayed on the Snellen chart."
+
+    initial_message = "Hello! Welcome to the eye test."
 
     current_word_index = 0
     incorrect_attempts = {i: 0 for i in range(len(snell_chart_data))}
@@ -273,7 +272,6 @@ def index():
     return render_template('index.html', data=snell_chart_data[current_word_index], initial_message=initial_message)
 
 
-#
 def generate_report_table(word_index):
     if word_index >= 0 and word_index < len(snell_chart_data):
         word_data = snell_chart_data[word_index]
@@ -381,17 +379,22 @@ def get_distance():
 @app.route('/close_camera', methods=['POST'])
 def close_camera():
     global cap
+
     if cap is not None and cap.isOpened():
         cap.release()
     cv2.destroyAllWindows()
-
+    
     return redirect(url_for('dashboard'))
+
 
 
 @app.route('/home')
 def home1():
     return render_template('home.html')
 
+@app.route('/shortsightnesspage')
+def home43():
+    return render_template('shortsightnesspage.html')
 
 @app .route('/about')
 def about():
